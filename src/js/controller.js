@@ -1,4 +1,6 @@
 import icons from 'url:../img/icons.svg';
+import 'core-js/stable'; //polyfill ES6 features for old browsers
+import 'regenerator-runtime/runtime'; //polyfill ES6 features for old browsers
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -34,7 +36,11 @@ const showRecipe = async function () {
       // 'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bcc40'
       'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
     );
+    // console.table(res);
+
     const data = await res.json();
+
+    // console.table(data);
 
     if (!res.ok) throw new Error(`${data.message} (${res.status})`);
 
