@@ -6,6 +6,11 @@ import resultsView from './views/resultsView.js';
 import 'core-js/stable'; //polyfill ES6 features for old browsers
 import 'regenerator-runtime/runtime'; //polyfill ES6 features for old browsers
 
+// Parcel hot module reloading
+if (module.hot) {
+  module.hot.accept();
+}
+
 // https://forkify-api.herokuapp.com/v2
 
 const controlRecipes = async function () {
@@ -38,7 +43,6 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     // 3) Render results
-    console.log(model.state.search.results);
     resultsView.render(model.state.search.results);
   } catch (err) {
     console.log(err);
